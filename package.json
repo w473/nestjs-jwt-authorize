@@ -2,9 +2,16 @@
   "name": "nestjs-keycloak-authorize",
   "version": "0.0.1",
   "description": "NestJS package to authorize by role from Keycloak JWT (payload)",
-  "main": "index.js",
+  "main": "./lib/src/index.js",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "build": "tsc",
+    "clean": "rm -rf ./lib/",
+    "lint": "eslint ./src/ --fix",
+    "prepare": "husky install",
+    "semantic-release": "semantic-release",
     "test": "jest",
     "test:cov": "jest --coverage"
   },
@@ -34,11 +41,18 @@
     "prettier": "^2.5.0",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
+    "husky": "^7.0.4",
+    "semantic-release": "^18.0.1",
     "typescript": "^4.5.2"
   },
   "eslintConfig": {
     "extends": [
       "./node_modules/linter-config/.eslintrc.ts.js"
+    ]
+  },
+  "release": {
+    "branches": [
+      "main"
     ]
   }
 }
