@@ -2,12 +2,14 @@
   "name": "nestjs-keycloak-authorize",
   "version": "0.0.1",
   "description": "NestJS package to authorize by role from Keycloak JWT (payload)",
-  "main": "./lib/src/index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
     "build": "tsc",
+    "prepublish": "clean && build",
     "clean": "rm -rf ./lib/",
     "lint": "eslint ./src/ --fix",
     "prepare": "husky install",
