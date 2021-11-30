@@ -17,5 +17,5 @@ module.exports = {
   roots: ['<rootDir>'],
   modulePaths: ['<rootDir>'],
   clearMocks: true,
-  coveragePathIgnorePatterns: ['src/decorators/*'],
+  coveragePathIgnorePatterns: ['src/decorators/*', 'src/index.ts'],
 };
