@@ -11,8 +11,8 @@ Roles are expected to be in payload of token in
 ```json
 "realm_access": {
     "roles": [
-      'ADMIN',
-      'SYS'
+      "ADMIN",
+      "SYS"
     ]
   },
 
