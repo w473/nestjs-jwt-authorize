@@ -1,7 +1,7 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { KeycloakJwtToken } from './models/keycloak.jwt.token';
-import { getUserFromKeycloakJwtToken } from 'src/models/user';
+import { getUserFromKeycloakJwtToken } from './models/user';
 
 @Injectable()
 export class AuthorizationGuard implements CanActivate {
