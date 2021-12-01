@@ -21,7 +21,7 @@ describe('RolesGuard test', () => {
   it('will return true no required roles', async () => {
     const context = mock<ExecutionContext>();
     const httpArgumentsHost = mock<HttpArgumentsHost>();
-    const request = mock<any & { user: User }>();
+    const request = mock<any & { user: User<any> }>();
     request.user = new User();
     httpArgumentsHost.getRequest.mockReturnValue(request);
     context.switchToHttp.mockReturnValue(httpArgumentsHost);
@@ -48,7 +48,7 @@ describe('RolesGuard test', () => {
   it('will return false due to wrong roles', async () => {
     const context = mock<ExecutionContext>();
     const httpArgumentsHost = mock<HttpArgumentsHost>();
-    const request = mock<any & { user: User }>();
+    const request = mock<any & { user: User<any> }>();
     const user = new User();
     user.roles = ['whatever'];
     request.user = user;
@@ -63,7 +63,7 @@ describe('RolesGuard test', () => {
   it('will return true - role matches', async () => {
     const context = mock<ExecutionContext>();
     const httpArgumentsHost = mock<HttpArgumentsHost>();
-    const request = mock<any & { user: User }>();
+    const request = mock<any & { user: User<any> }>();
     const role = 'tomato';
     const user = new User();
     user.roles = ['whatever', role];
