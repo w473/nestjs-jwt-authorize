@@ -1,6 +1,7 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { User } from './models/user';
+import { KeycloakJwtToken } from './models/keycloak.jwt.token';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -14,7 +15,7 @@ export class RolesGuard implements CanActivate {
     if (!request.user || !(request.user instanceof User)) {
       return false;
     }
-    const user = <User>request.user;
+    const user = <User<KeycloakJwtToken>>request.user;
 
     const roles = this.reflector.get<string[]>('roles', context.getHandler());
     if (!roles || roles.length === 0) {

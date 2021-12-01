@@ -1,6 +1,6 @@
 import { KeycloakJwtToken } from './keycloak.jwt.token';
 
-export class User {
+export class User<Token> {
   id: string;
   roles: string[];
   sid: string;
@@ -10,10 +10,12 @@ export class User {
   givenName: string;
   familyName: string;
   email: string;
-  token: KeycloakJwtToken;
+  token: Token;
 }
 
-export const getUserFromKeycloakJwtToken = (token: KeycloakJwtToken): User => {
+export const getUserFromKeycloakJwtToken = (
+  token: KeycloakJwtToken,
+): User<any> => {
   return {
     id: token.sub,
     email: token.email,
