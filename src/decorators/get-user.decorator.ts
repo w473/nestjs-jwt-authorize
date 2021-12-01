@@ -3,14 +3,14 @@ import {
   ExecutionContext,
   Request,
 } from '@nestjs/common';
-import { User as AuthUser } from '../models/user';
+import { User } from '../models/user';
 import { UserNotFoundException } from '../exceptions/user-not-found.exception';
 
 interface RequestWithUser extends Request {
-  user: AuthUser;
+  user: User;
 }
 
-export const GetUser = createParamDecorator((ctx: ExecutionContext): AuthUser => {
+export const GetUser = createParamDecorator((ctx: ExecutionContext): User => {
   const request = <RequestWithUser>ctx.switchToHttp().getRequest();
   const { user } = request;
   if (!user) {

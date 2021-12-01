@@ -31,19 +31,39 @@ describe('AuthorizationGuard test', () => {
   });
 
   it('will return true with user in request', async () => {
-    const context = mock<ExecutionContext>();
-    const httpArgumentsHost = mock<HttpArgumentsHost>();
-    const request: any = mock<any>();
-    request.header.mockReturnValue(
-      'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiU1lTIl19fQ',
-    );
-    httpArgumentsHost.getRequest.mockReturnValue(request);
-    context.switchToHttp.mockReturnValue(httpArgumentsHost);
-    reflectorMock.get.mockReturnValue(false);
-    expect(authGuard.canActivate(context)).toEqual(true);
-    expect(request.user).toEqual({
-      roles: ['SYS'],
-    });
+      const context = mock<ExecutionContext>();
+      const httpArgumentsHost = mock<HttpArgumentsHost>();
+      const request: any = mock<any>();
+      request.header.mockReturnValue(
+          'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiU1lTIl19fQ',
+      );
+      httpArgumentsHost.getRequest.mockReturnValue(request);
+      context.switchToHttp.mockReturnValue(httpArgumentsHost);
+      reflectorMock.get.mockReturnValue(false);
+      expect(authGuard.canActivate(context)).toEqual(true);
+      expect(request.user).toEqual({
+          "email": undefined,
+          "emailVerified": undefined,
+          "familyName": undefined,
+          "givenName": undefined,
+          "id": "1234567890",
+          "name": "John Doe",
+          "preferredUsername": undefined,
+          "roles": [
+              "SYS",
+          ],
+          "sid": undefined,
+          "token": {
+              "iat": 1516239022,
+              "name": "John Doe",
+              "realm_access": {
+                  "roles": [
+                      "SYS",
+                  ],
+              },
+              "sub": "1234567890",
+          }
+      });
   });
 
   it('will return false due to no token', async () => {

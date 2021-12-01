@@ -31,6 +31,4 @@ export interface KeycloakJwtToken {
   given_name: string;
   family_name: string;
   email: string;
-  locale?: string;
-  timezone?: string;
 }

@@ -18,10 +18,14 @@ Roles are expected to be in payload of token in
 
 ```
 Decorators:
-- HasRole(roles)
-  - e.g @HasRole('ADMIN', 'SYS')
-- IsPublic()
-  - no authorization!
+- for methods:
+  - HasRole(roles)
+    - e.g @HasRole('ADMIN', 'SYS')
+  - IsPublic()
+    - no authorization!
+- for parameters
+  - GetUser()
+    - returns User object or throws UserNotFoundException 
 
 
 ## Installation
