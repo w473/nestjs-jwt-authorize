@@ -29,6 +29,22 @@ Decorators:
 ```bash
 $ npm i nestjs-keycloak-authorize
 ```
+NestJS module:
+```ts
+providers: [
+    {
+      provide: APP_GUARD,
+      inject: [Reflector],
+      useFactory: (reflector: Reflector) => {
+        return new AuthorizationGuard(reflector, 'x-authz');
+      },
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ]
+```
 
 ## Test
 
