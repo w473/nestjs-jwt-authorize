@@ -1,4 +1,4 @@
-import { KeycloakJwtToken } from 'src/models/keycloak.jwt.token';
+import { KeycloakJwtToken } from './keycloak.jwt.token';
 
 export class User {
   id: string;
