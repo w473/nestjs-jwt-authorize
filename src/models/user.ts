@@ -10,7 +10,7 @@ export class User<Token> {
   givenName: string;
   familyName: string;
   email: string;
-  token: KeycloakJwtToken | Token;
+  token: Token;
 }
 
 export const getUserFromKeycloakJwtToken = (
