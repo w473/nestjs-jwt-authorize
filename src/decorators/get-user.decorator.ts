@@ -11,7 +11,7 @@ interface RequestWithUser<Token> extends Request {
 }
 
 export const GetUser = createParamDecorator(
-  <Token>(ctx: ExecutionContext): User<Token> => {
+  <Token>(data: unknown, ctx: ExecutionContext): User<Token> => {
     const request = <RequestWithUser<Token>>ctx.switchToHttp().getRequest();
     const { user } = request;
     if (!user) {
