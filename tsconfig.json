@@ -18,9 +18,9 @@
       "forceConsistentCasingInFileNames": false,
       "noFallthroughCasesInSwitch": false,
       "moduleResolution": "node",
-      "strict": true,
-      "paths": {
-         "src/*": ["src/*"],
-      }
-   }
+      "strict": true
+   },
+   "include": [
+      "src/**/*"
+   ]
 }
