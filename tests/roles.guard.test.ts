@@ -2,7 +2,7 @@ import { Reflector } from '@nestjs/core';
 import { mock, mockReset } from 'jest-mock-extended';
 import { ExecutionContext } from '@nestjs/common/interfaces/features/execution-context.interface';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface';
-import { RolesGuard } from 'src/roles.guard';
+import { RolesGuard } from 'src/guards/roles.guard';
 import { User } from 'src/models/user';
 
 describe('RolesGuard test', () => {

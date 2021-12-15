@@ -21,8 +21,6 @@ Decorators:
 - for methods:
   - HasRole(roles)
     - e.g @HasRole('ADMIN', 'SYS')
-  - IsPublic()
-    - no authorization!
 - for parameters
   - GetUser()
     - returns User object or throws UserNotFoundException 
@@ -37,17 +35,20 @@ NestJS module:
 ```ts
 providers: [
     {
-      provide: APP_GUARD,
-      inject: [Reflector],
-      useFactory: (reflector: Reflector) => {
-        return new AuthorizationGuard(reflector, 'x-authz');
-      },
+      provide: AUTHORIZATION_HEADER_NAME,
+      useValue: 'x-authz'
     },
     {
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
   ]
+
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): any {
+    consumer.apply(AuthenticationMiddleware).forRoutes('*');
+  }
+}
 ```
 
 ## Test
