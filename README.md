@@ -21,6 +21,7 @@ Decorators:
 - for methods:
   - HasRole(roles)
     - e.g @HasRole('ADMIN', 'SYS')
+  - IsPublic()
 - for parameters
   - GetUser()
     - returns User object or throws UserNotFoundException 
