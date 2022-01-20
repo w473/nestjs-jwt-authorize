@@ -2,13 +2,17 @@ import { Reflector } from '@nestjs/core';
 import { mock, mockReset } from 'jest-mock-extended';
 import { AuthenticationMiddleware } from '../../src/middlewares/authentication.middleware';
 import { UnauthorizedException } from '@nestjs/common';
+import { TokenParserInterface } from 'src/logic/token.parser.interface';
 
 describe('AuthenticationMiddleware test', () => {
   let authMiddleware: AuthenticationMiddleware;
   const reflectorMock = mock<Reflector>();
-
+  const tokenParser = mock<TokenParserInterface>();
+  tokenParser.getUserFromTokenObject.mockReturnValue({
+    roles: ['SYS'],
+  });
   beforeEach(async () => {
-    authMiddleware = new AuthenticationMiddleware('header');
+    authMiddleware = new AuthenticationMiddleware('header', tokenParser);
   });
 
   afterEach(() => {
@@ -28,23 +32,7 @@ describe('AuthenticationMiddleware test', () => {
     reflectorMock.get.mockReturnValue(false);
     authMiddleware.use(request, response, functionToCall);
     expect(request.user).toEqual({
-      email: undefined,
-      emailVerified: undefined,
-      familyName: undefined,
-      givenName: undefined,
-      id: '1234567890',
-      name: 'John Doe',
-      preferredUsername: undefined,
       roles: ['SYS'],
-      sid: undefined,
-      token: {
-        iat: 1516239022,
-        name: 'John Doe',
-        realm_access: {
-          roles: ['SYS'],
-        },
-        sub: '1234567890',
-      },
     });
   });
 
