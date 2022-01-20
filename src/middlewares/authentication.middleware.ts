@@ -8,6 +8,7 @@ import {
 import { Request, Response, NextFunction } from 'express';
 import { TokenParserInterface } from 'src/logic/token.parser.interface';
 export const AUTHORIZATION_HEADER_NAME = 'AUTHORIZATION_HEADER_NAME';
+export const TOKEN_PARSER_INTERFACE = 'TokenParserInterface';
 
 @Injectable()
 export class AuthenticationMiddleware implements NestMiddleware {
