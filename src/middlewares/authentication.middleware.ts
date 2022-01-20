@@ -16,7 +16,7 @@ export class AuthenticationMiddleware implements NestMiddleware {
 
   constructor(
     @Inject(AUTHORIZATION_HEADER_NAME) private authorizationHeader: string,
-    @Inject('TokenParserInterface')
+    @Inject(TOKEN_PARSER_INTERFACE)
     private tokenParser: TokenParserInterface,
   ) {}
 
