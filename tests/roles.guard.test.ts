@@ -3,7 +3,7 @@ import { mock, mockReset } from 'jest-mock-extended';
 import { ExecutionContext } from '@nestjs/common/interfaces/features/execution-context.interface';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-host.interface';
 import { RolesGuard } from 'src/guards/roles.guard';
-import { User } from 'src/models/user';
+import { UserInterface } from 'src/models/user.interface';
 
 describe('RolesGuard test', () => {
   let rolesGuard: RolesGuard;
@@ -21,8 +21,10 @@ describe('RolesGuard test', () => {
   it('will return true no required roles', async () => {
     const context = mock<ExecutionContext>();
     const httpArgumentsHost = mock<HttpArgumentsHost>();
-    const request = mock<any & { user: User<any> }>();
-    request.user = new User();
+    const request = mock<any & { user: UserInterface }>();
+    request.user = {
+      roles: [],
+    };
     httpArgumentsHost.getRequest.mockReturnValue(request);
     context.switchToHttp.mockReturnValue(httpArgumentsHost);
     reflectorMock.get.mockReturnValueOnce(false).mockReturnValueOnce([]);
@@ -48,8 +50,10 @@ describe('RolesGuard test', () => {
   it('will return false due to wrong roles', async () => {
     const context = mock<ExecutionContext>();
     const httpArgumentsHost = mock<HttpArgumentsHost>();
-    const request = mock<any & { user: User<any> }>();
-    const user = new User();
+    const request = mock<any & { user: UserInterface }>();
+    const user = {
+      roles: [],
+    };
     user.roles = ['whatever'];
     request.user = user;
     httpArgumentsHost.getRequest.mockReturnValue(request);
@@ -63,9 +67,11 @@ describe('RolesGuard test', () => {
   it('will return true - role matches', async () => {
     const context = mock<ExecutionContext>();
     const httpArgumentsHost = mock<HttpArgumentsHost>();
-    const request = mock<any & { user: User<any> }>();
+    const request = mock<any & { user: UserInterface }>();
     const role = 'tomato';
-    const user = new User();
+    const user = {
+      roles: [],
+    };
     user.roles = ['whatever', role];
     request.user = user;
     httpArgumentsHost.getRequest.mockReturnValue(request);

@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-keycloak-authorize",
+  "name": "nestjs-jwt-authorize",
   "version": "1.3.0",
-  "description": "NestJS package to authorize by role from Keycloak JWT (payload)",
+  "description": "NestJS package to authorize by role from JWT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
@@ -23,9 +23,9 @@
   "license": "APACHE 2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/w473/nestjs-keycloak-authorize.git"
+    "url": "https://github.com/w473/nestjs-jwt-authorize.git"
   },
-  "homepage": "https://github.com/w473/nestjs-keycloak-authorize",
+  "homepage": "https://github.com/w473/nestjs-jwt-authorize",
   "dependencies": {
     "@nestjs/common": "^8.2.3",
     "@nestjs/core": "^8.2.3"
