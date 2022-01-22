@@ -1,4 +1,4 @@
-# nestjs-keycloak-authorize
+# nestjs jwt authorize
 ## Description
 NestJS package to authorize by role from JWT. 
 
