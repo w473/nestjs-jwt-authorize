@@ -1,6 +1,6 @@
 {
   "name": "nestjs-jwt-authorize",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "NestJS package to authorize by role from JWT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
