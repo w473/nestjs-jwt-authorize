@@ -26,10 +26,10 @@ export class AuthenticationMiddleware implements NestMiddleware {
     next: NextFunction,
   ): NextFunction | void {
     try {
-      const token = req.header(this.authorizationHeader);
-      if (token) {
-        const jwt = JSON.parse(Buffer.from(token, 'base64').toString());
-        this.logger.verbose('Received JWT', jwt);
+      const header = req.header(this.authorizationHeader);
+      if (header) {
+        const jwt = this.tokenParser.parseHeader(header);
+        this.logger.verbose('Parsed header', jwt);
         req.user = this.tokenParser.getUserFromTokenObject(jwt);
         this.logger.verbose('User parsed from JWT', req.user);
         return next();
