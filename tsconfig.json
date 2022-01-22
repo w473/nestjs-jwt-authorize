@@ -24,4 +24,7 @@
          "tests/*": ["tests/*"]
       }
    },
+   "include": [
+      "src/**/*"
+   ]
 }
