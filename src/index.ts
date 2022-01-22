@@ -7,3 +7,4 @@ export * from './guards/roles.guard';
 export * from './middlewares/authentication.middleware';
 export * from './exceptions/user-not-found.exception';
 export * from './logic/token.parser.interface';
+export * from './logic/bearer-header-token.parser';
